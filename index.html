@@ -210,8 +210,7 @@ hr {
 <!-- describes and summarizes your analysis in at most 10 complete sentences. -->
 
 <p>This report describes a model for predictive machine learning of exercise quantification
-using wearable technology. The Weight Lifting Exercise (WLE)<br/>
-wearable accelerometer data, from
+using wearable technology. The Weight Lifting Exercise (WLE)  wearable accelerometer data, from
 <a href="http://groupware.les.inf.puc-rio.br/har#weight_lifting_exercises">Groupware@LES HAR project</a>
 was collected for six study participants and classified according to how the exercise
 was performed. More information on this dataset and the HAR project can be found in
@@ -261,7 +260,7 @@ one could be used to predict on the test data set.</p>
 
 <pre><code class="r">set.seed(92115)
 mf2 &lt;- randomForest(classe ~ ., data=trainData, trControl=trainControl(method=&#39;cv&#39;))
-mf3 &lt;- train(classe ~ ., data=trainData, trControl=trainControl(method=&#39;cv&#39;),method=&#39;gbm&#39;,          verbose=F)
+mf3 &lt;- train(classe ~ ., data=trainData, trControl=trainControl(method=&#39;cv&#39;),method=&#39;gbm&#39;, verbose=F)
 mf2
 </code></pre>
 
@@ -333,7 +332,11 @@ applied to the testing data, that the predictions should be accurate.</p>
 
 <p>The GBM model gives an accuracy of 0.964 for the best model. 
 The GBM model is also has very low out-of-sample errors, but is not as accurate
-as the random forest model.</p>
+as the random forest model. The optimal GBM model uses 150 trees with an interaction
+depth of 3 (the highest depth testing in the model). The accuracy of this model can
+be improved by tuning the model parameters. However, since the estimated out-of-sample
+error for this model is less than 4% with the default paramters, it is generally not
+worth the additional time and memory required.</p>
 
 <p>The plot below shows the random
 forest model estimated out-of-sample error as a function of number of trees, colored by
@@ -400,6 +403,8 @@ that the predictions were all correct.</p>
 <em>Qualitative Activity Recognition of Weight Lifting Exercises</em>, 
 <strong>Proc. 4th International Conference in Cooperation with SIGCHI (Augmented Human &#39;13)</strong>, 
 Stuttgart, Germany: ACM SIGCHI, 2013. </p>
+
+<p>Copyright 2015, Seth A. Veitzer</p>
 
 </body>
 
